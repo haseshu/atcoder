@@ -1,0 +1,11 @@
+version: '3'
+services:
+  atcoder:
+    restart: always
+    build: .
+    container_name: 'atcoder'
+    working_dir: '/root/atcoder/'
+    tty: true
+    volumes:
+      - ./atcoder:/root/flask
+    stdin_open: true
