@@ -20,12 +20,12 @@ for i in range(1,N+1):
     subx = X[i] - X[i-1]
     suby = Y[i] - Y[i-1]
 #    print("{},{},{}".format(T[i],X[i],Y[i]))
-    print("sub = {},{},{}".format(subt,subx,suby))
+#    print("sub = {},{},{}".format(subt,subx,suby))
     length = abs(subx) + abs(suby)
-    print("length = {}".format(length))
+#    print("length = {}".format(length))
     if (subt % 2 != length % 2) or (subt < length):
         have_route = False
 if have_route == True:
-    print("YES")
+    print("Yes")
 else:
-    print("NO")
+    print("No")
