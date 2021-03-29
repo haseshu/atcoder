@@ -1,6 +1,6 @@
+##タイムアウトと、一部実行時エラーが出る。
 N = int(input())
-
-print(N)
+#print(N)
 
 a = []
 t = []
@@ -8,30 +8,31 @@ for i in range(N):
     ai,ti = list(map(int,input().split()))
     a.append(ai)
     t.append(ti)
-print(a)
-print(t)
+#print(a)
+#print(t)
 Q = int (input())
-print(Q)
+#print(Q)
 x = list(map(int, input().split()))
-print(x)
+#print(x)
 
 f=[-999] * Q
 
-##ここを作る
-def saiki(i):
-    if f[i] == -999:
-        if t[i] == 1:
-            f[i] = saiki(i-1) + a[i]
-        elif t[i] == 2:
-            f[i] = max()
-            pass
-        elif t[i] == 3:
-            pass
-
-    if f[i] == -999:
-        f[i] = saiki(i-1)
-
-    pass
+##ここを再帰ではなく、1回式を作ったらそれを保存して使いまわしにすればタイムアウトは無くなるのでは。
+def saiki(i, n):
+    if n == 0:
+        if t[n] == 1:
+            return a[n] + x[i]
+        if t[n] == 2:
+            return max([a[n], x[i]])
+        if t[n] == 3:
+            return min([a[n], x[i]])
+    else:
+        if t[n] == 1:
+            return saiki(i, n-1) + a[n]
+        elif t[n] == 2:
+            return max([a[n],saiki(i, n-1)])
+        elif t[n] == 3:
+            return min([a[n],saiki(i, n-1)])
 
 for i in range(Q):
-    pass
+    print(saiki(i, N-1))
