@@ -13,11 +13,12 @@ UNSATISFIABLE =True
 for i in range(1, W+1):
     if i * A <= W and i * B >= W:
         if count_min >= i:
-            count_min = i
             UNSATISFIABLE = False
         if count_max <= i:
-            count_max = i
             UNSATISFIABLE = False
+
+        count_min = min(count_min, i)
+        count_max = max(count_max, i)
 
 if UNSATISFIABLE:
     print("UNSATISFIABLE")
