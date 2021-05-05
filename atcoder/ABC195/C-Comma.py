@@ -5,11 +5,15 @@ N = int(input())
 #1,000,000以上、1,000,000,000未満の数×2
 #1,000,000,000以上、1,000,000,000,000未満の数×3
 #1,000,000,000,000以上の数×4
+#1,000,000,000,000,000以上の数×5
 thousand = 1000
 million = 1000000
 billion = 1000000000
 trillion = 1000000000000
+quadrillion = 1000000000000000
 count = 0
+if N >= quadrillion:
+    count = count + (N - quadrillion + 1)
 if N >= trillion:
     count = count + (N - trillion +1)
 if N >= billion:
