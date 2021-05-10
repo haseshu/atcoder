@@ -40,26 +40,31 @@ sorted_WV =sorted(WV.items(), key = lambda x:x[1][1],reverse=True)
 for i in range (Q):
     Xi = copy.copy(X)
     #入力確認
-    print("Xi[{}:{}] = {}".format(LR[i][0],LR[i][1],Xi[LR[i][0] - 1 :LR[i][1]]))
+    #print("Xi[{}:{}] = {}".format(LR[i][0],LR[i][1],Xi[LR[i][0] - 1 :LR[i][1]]))
     del Xi[LR[i][0] - 1 : LR[i][1]]
     Xi.sort()
     cost = 0
     sorted_WV_Is_ship =[False]*N
+    Xi_Is_Full =[False]*len(Xi)
     length = 0
-    if N < len(Xi):
-        length = N
-    else:
-        length = len(Xi)
+    length = len(Xi)
+#    if N < len(Xi):
+#        length = N
+#    else:
+#        length = len(Xi)
 
     #入力確認
-    print("LR = {}".format(LR[i]))
-    print("Xi = {}".format(Xi))
+    #print("LR = {}".format(LR[i]))
+    #print("Xi = {}".format(Xi))
     #print(sorted_WV_Is_ship)
     #Vが大きい方からWとXで比較して、最も小さいXに入れていく
     for i in range(length):
-        if sorted_WV[i][1][0] <= Xi[i] and sorted_WV_Is_ship[i] is False:
-            cost = cost + sorted_WV[i][1][1]
-            sorted_WV_Is_ship[i] = True
+        for j in range(N):
+            if sorted_WV[j][1][0] <= Xi[i] and sorted_WV_Is_ship[j] is False and Xi_Is_Full[i] is False:
+                cost = cost + sorted_WV[j][1][1]
+    #            print(sorted_WV[j])
+                sorted_WV_Is_ship[j] = True
+                Xi_Is_Full[i] = True
     print(cost)
 
 
